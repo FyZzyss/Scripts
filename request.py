@@ -123,8 +123,8 @@ if __name__ == '__main__':
                 else:
                     data = get_data_by_vrb_id(cur, row[args.vrb_id])
                 r = requests.post(
-                    f'https://ewallet.mts.ru/ewallet/3.4/VRB_BANK/getStatus.do?phone={data[1]}&partnerMdOrder={request_id_to_mts(data[0])}',
-                    headers={'Content-Type': 'application/x-www-form-urlencoded'}, cert=('VRB_BANK.crt', 'VRB_BANK.key'),
+                    f'https://ewallet.mts.ru/ewallet/3.4/random/getStatus.do?phone={data[1]}&partnerMdOrder={request_id_to_mts(data[0])}',
+                    headers={'Content-Type': 'application/x-www-form-urlencoded'}, cert=('random.crt', 'random.key'),
                     verify=False)
                 writer.writerow({'vrd_id': request_id_to_mts(data[0]), 'msisdn': data[1], 'mts_status': r.json()['state'],
                                  'mts_errorcode': r.json()['errorCode']})
